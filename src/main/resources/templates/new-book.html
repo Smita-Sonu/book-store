@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head data-th-replace="~{fragment :: head(~{::link})}">
+    <link rel="stylesheet" href="/css/new-book.css">
+</head>
+
+<body>
+    <header data-th-replace="~{home :: header}"></header>
+
+    <main>
+        <nav data-th-replace="~{fragment :: nav('/home' , 'Back to home')}">
+        </nav>
+
+        <section>
+            <form action="/create-update-book" method="post" enctype="multipart/form-data">
+                <div class="inputs-container" data-th-object="${book}">
+                    <div>
+                        <label for="book-name">Book name</label>
+                        <input type="text" id="book-name" name="bookName" placeholder="ex:Java for begginers"
+                            class="input-field" data-th-field="*{bookName}">
+                    </div>
+
+                    <div>
+                        <label for="book-author">Book author</label>
+                        <input type="text" id="book-author" name="authorName" placeholder="ex:Rasmi Kanta Das"
+                            class="input-field" data-th-field="*{authorName}">
+                    </div>
+
+                    <div>
+                        <label for="total-page">Total Page</label>
+                        <input type="number" id="book-author" name="totalPage" placeholder="ex:897" class="input-field"
+                            data-th-field="*{totalPage}">
+                    </div>
+
+                    <div>
+                        <label for="publication-date">Publication date</label>
+                        <input type="date" id="publication-date" name="publicationDate" placeholder="ex:22.12.2000"
+                            class="input-field" data-th-value="*{publicationDate}">
+                    </div>
+
+                    <div class="flex-align-center-1">
+                        <label for="paper-back">PaperBack</label>
+                        <input type="radio" name="bookFormat" value="PAPERBACK" id="paper-back"
+                            data-th-field="*{bookFormat}">
+
+                        <label for="hard-cover">HardCover</label>
+                        <input type="radio" name="bookFormat" value="HARDCOVER" id="hard-cover"
+                            data-th-field="*{bookFormat}">
+                    </div>
+
+                    <div class="flex-align-center-1">
+                        <label for="amazon">Amazon</label>
+                        <input type="checkbox" id="amazon" name="availability" value="amazon"
+                            data-th-field="*{availability}">
+
+                        <label for="flipkart">Flipkart</label>
+                        <input type="checkbox" id="flipkart" name="availability" value="flipkart"
+                            data-th-field="*{availability}">
+
+                        <label for="offline">Offline</label>
+                        <input type="checkbox" id="offline" name="availability" value="offline"
+                            data-th-field="*{availability}">
+
+                    </div>
+
+                    <div>
+                        <label for="book-category">Book category</label>
+                        <select name="category" id="book-category" class="input-field" data-th-field="*{category}">
+                            <option value="sports">sports</option>
+                            <option value="technology">technology</option>
+                            <option value="fiction">fiction</option>
+                            <option value="non-fiction">non-fiction</option>
+                            <option value="function">finction</option>
+                            <option value="calculus">calculus</option>
+                            <option value="algorithm">algorithm</option>
+                            <option value="UHV">UHV</option>
+                            <option value="Geography">Geography</option>
+                            <option value="History">History</option>
+                            <option value="Maths">Maths</option>
+                            <option value="Biology">Biology</option>
+                            <option value="other">other</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label for="book-image">Book Image</label>
+                        <input type="file" name="bookImage" id="book-image">
+                    </div>
+
+                    <div class="grid-full">
+                        <label for="book-description">Book description</label>
+                        <textarea row="3" name="description" id="book-description" class="input-field"
+                            data-th-field="*{description}"></textarea>
+                    </div>
+
+                    <input type="hidden" name="bookId" data-th-field="*{bookId}">
+                </div>
+                <div class="submit-btn-container">
+                    <input type="submit">
+                </div>
+
+
+            </form>
+        </section>
+    </main>
+</body>
+
+</html>
